@@ -7,9 +7,9 @@ import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Ka
 import { Navbar, Footer, SideBar, ThemeSettings } from './components';
 import { useStateContext } from './context/ContextProvider';
 export const App = () => {
-    const {activeMenu}= useStateContext();
+    const {activeMenu,themeSettings, setThemeSettings,currentColor,currentMode}= useStateContext();
     return (
-        <div>
+        <div className={currentMode==="Dark" ? "dark" : ""}>
             <BrowserRouter>
                 <div className="flex relative dark:bg-main-dark-bg">
                     <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
@@ -17,7 +17,8 @@ export const App = () => {
                             <button type="button" className="text-3xl p-3 
                         hover:drop-shadow-xl
                         hover:bg-light-gray 
-                        text-white" style={{ background: "blue", borderRadius: "50%" }}>
+                        text-white" style={{ background: currentColor, borderRadius: "50%" }}
+                        onClick={()=>{setThemeSettings(true)}}>
                                 <FiSettings />
                             </button>
                         </TooltipComponent>
@@ -31,13 +32,15 @@ export const App = () => {
                         <div className="w-0 ark:bg-secondary-dark-bg bg-white">
                            <SideBar />
                         </div>)}
-                    <div className={` dark:bg-main-bg bg-main-bg min-h-screen md:ml-72 w-full ${activeMenu ? " md:ml-72 " : " flex-2"}`}>
+                    <div className={` dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72 w-full ${activeMenu 
+                       
+                       ? " md:ml-72 " : " flex-2"}`}>
                         <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg-navbar w-full">
                             <Navbar />
                         </div>
                     
                     <div>
-                        <ThemeSettings />
+                     { themeSettings &&   <ThemeSettings />}
                         <Routes>
  {/* dashboard  */}
  <Route path="/" element={(<Ecommerce />)} />

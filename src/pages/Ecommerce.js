@@ -6,11 +6,11 @@ import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 import { Stacked, Pie, Button, LineCharts, SparkLine } from '../components';
 import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
-import { useStateContext } from '../context/ContextProvider';
+import { useStateContext} from '../context/ContextProvider';
 import product9 from '../data/product9.jpg';
 
 export const Ecommerce = () => {
-    const currentMode=true
+    const {currentColor ,currentMode}=useStateContext()
     return ( <div className="mt-24">
     <div className="flex flex-wrap lg:flex-nowrap justify-center ">
       <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
@@ -21,7 +21,7 @@ export const Ecommerce = () => {
           </div>
           <button
             type="button"
-            style={{ backgroundColor: "blue"}}
+            style={{ backgroundColor: {currentColor}}}
             className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full  p-4"
           >
             <BsCurrencyDollar />
@@ -30,7 +30,7 @@ export const Ecommerce = () => {
         <div className="mt-6">
           <Button
             color="white"
-            bgColor="blue"
+            bgColor={currentColor}
             text="Download"
             borderRadius="10px"
           />
@@ -95,12 +95,12 @@ export const Ecommerce = () => {
             </div>
 
             <div className="mt-5">
-              <SparkLine currentColor="blue" id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} color="blue" />
+              <SparkLine currentColor={currentColor} id="line-sparkLine" type="Line" height="80px" width="250px" data={SparklineAreaData} color={currentColor} />
             </div>
             <div className="mt-10">
               <Button
                 color="white"
-                bgColor="blue"
+                bgColor={currentColor}
                 text="Download Report"
                 borderRadius="10px"
               />
@@ -114,7 +114,7 @@ export const Ecommerce = () => {
       <div>
         <div
           className=" rounded-2xl md:w-400 p-4 m-3"
-          style={{ backgroundColor: "blue"}}
+          style={{ backgroundColor: {currentColor}}}
         >
           <div className="flex justify-between items-center ">
             <p className="font-semibold text-white text-2xl">Earnings</p>
@@ -126,7 +126,7 @@ export const Ecommerce = () => {
           </div>
 
           <div className="mt-4">
-            <SparkLine currentColor="blue" 
+            <SparkLine currentColor={currentColor} 
             id="column-sparkLine" 
             height="100px" 
             type="Column" 
@@ -182,7 +182,7 @@ export const Ecommerce = () => {
           <div className="mt-3">
             <Button
               color="white"
-              bgColor="blue"
+              bgColor={currentColor}
               text="Add"
               borderRadius="10px"
             />
@@ -232,7 +232,7 @@ export const Ecommerce = () => {
             </div>
           ))}
           <div className="mt-4">
-            <SparkLine currentColor="blue" id="area-sparkLine" height="160px" type="Area" data={SparklineAreaData} width="320" color="rgb(242, 252, 253)" />
+            <SparkLine currentColor={currentColor} id="area-sparkLine" height="160px" type="Area" data={SparklineAreaData} width="320" color="rgb(242, 252, 253)" />
           </div>
         </div>
 
@@ -283,7 +283,7 @@ export const Ecommerce = () => {
           <div className="mt-3">
             <Button
               color="white"
-              bgColor="blue"
+              bgColor={currentColor}
               text="Add"
               borderRadius="10px"
             />
@@ -315,7 +315,7 @@ export const Ecommerce = () => {
             <div className="mt-3">
               <Button
                 color="white"
-                bgColor="blue"
+                bgColor={currentColor}
                 text="Read More"
                 borderRadius="10px"
               />
